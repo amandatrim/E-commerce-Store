@@ -50,3 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Enable or disable purchase button based on stock availability
         purchaseButton.disabled = !stockAvailability[selectedSize];
     });
+
+    // Task 3: Handle the purchase button click event
+    purchaseButton.addEventListener('click', () => {
+        const selectedSize = sizeSelect.value;
+
+        // Check stock availability before allowing purchase
+        if (!stockAvailability[selectedSize]) {
+            alert('This product size is out of stock and cannot be purchased.');
+        } else {
+            alert('Purchase successful! Thank you for your order.');
+        }
+    });
