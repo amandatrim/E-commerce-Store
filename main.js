@@ -62,3 +62,28 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Purchase successful! Thank you for your order.');
         }
     });
+  // Task 4: Handle form submission for adding new products
+  productForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    // Get product details from the form
+    const name = document.getElementById('product-name-input').value;
+    const price = document.getElementById('product-price-input').value;
+    const size = document.getElementById('product-size-input').value;
+
+    // Create a new product entry in the DOM
+    const newProduct = document.createElement('div');
+    newProduct.classList.add('product');
+    newProduct.innerHTML = `
+        <h3>${name}</h3>
+        <p>Price: $<span class="product-price">${price}</span></p>
+        <p>Size: <span class="product-size">${size.charAt(0).toUpperCase() + size.slice(1)}</span></p>
+        <button class="purchase-button">Purchase</button>
+    `;
+
+    // Append new product to the product list
+    productList.appendChild(newProduct);
+
+    // Reset the form for next input
+    productForm.reset();
+});
