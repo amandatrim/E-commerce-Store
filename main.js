@@ -34,3 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial call to populate size options
     updateSizeOptions();
+    // Task 2: Update price and purchase button status when a size is selected
+    sizeSelect.addEventListener('change', (event) => {
+        const selectedSize = event.target.value;
+
+        // Update price based on selected size
+        if (selectedSize === 'small') {
+            productPrice.textContent = '20.00';
+        } else if (selectedSize === 'medium') {
+            productPrice.textContent = '25.00';
+        } else if (selectedSize === 'large') {
+            productPrice.textContent = '30.00';
+        }
+
+        // Enable or disable purchase button based on stock availability
+        purchaseButton.disabled = !stockAvailability[selectedSize];
+    });
